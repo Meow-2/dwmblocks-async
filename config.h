@@ -2,7 +2,7 @@
 #define CONFIG_H
 
 // String used to delimit block outputs in the status.
-#define DELIMITER "  "
+#define DELIMITER ""
 
 // Maximum number of Unicode characters that a block can output.
 #define MAX_BLOCK_OUTPUT_LENGTH 45
@@ -17,16 +17,17 @@
 #define TRAILING_DELIMITER 0
 
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
-#define BLOCKS(X)             \
-    X("", "sb-mail", 600, 1)  \
-    X("", "sb-music", 0, 2)   \
-    X("", "sb-disk", 1800, 3) \
-    X("", "sb-memory", 10, 4) \
-    X("", "sb-loadavg", 5, 5) \
-    X("", "sb-mic", 0, 6)     \
-    X("", "sb-record", 0, 7)  \
-    X("", "sb-volume", 0, 8)  \
-    X("", "sb-battery", 5, 9) \
-    X("", "sb-date", 1, 10)
+// update
+#define BLOCKS(X)                                                          \
+    X("","~/.config/dwm/dwmblocks-async/scripts/arch_update.sh 2>/dev/null", 1800 , 8) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/bandwidth.sh 2>/dev/null"  , 2    , 1) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/cpu.sh 2>/dev/null"        , 2    , 2) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/memory.sh 2>/dev/null"     , 2    , 3) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/time.sh 2>/dev/null"       , 25   , 4) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/backlight.sh 2>/dev/null"  , 30   , 5) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/volume.sh 2>/dev/null"     , 1    , 6) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/battery.sh 2>/dev/null"    , 60   , 7) \
+    // update_volume_at_once: kill -40 $(pidof dwmblocks);
+    // why 40? 40=34+6=SIGRTMIN+6,SIGRTMIN+n is real time singal
 
-#endif  // CONFIG_H
+#endif  // CONFIG_Hxsetroot -name
