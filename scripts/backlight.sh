@@ -1,17 +1,11 @@
 #!/bin/bash
 
+backlight_change_step=5
 case "$BLOCK_BUTTON" in
-    # 1) notify-send "backlight1" ;;
-    # 2) notify-send "backlight2" ;;
-    # 3) notify-send "backlight3" ;;
-    4)
-        ~/.config/dwm/scripts/app-starter.sh set_backlight up 3 >/dev/null &
-        exit 1
-        ;;
-    5)
-        ~/.config/dwm/scripts/app-starter.sh set_backlight down 3 >/dev/null &
-        exit 1
-        ;;
+    4) # backlight up
+        light -A $backlight_change_step </dev/null >/dev/null 2>&1 ;;
+    5) # backlight down
+        light -U $backlight_change_step </dev/null >/dev/null 2>&1 ;;
 esac
 
 s2d_reset="^d^" # statu2d control
@@ -28,3 +22,9 @@ text=" $backlight_icon $backlight_text "
 # text="  $backlight_text $backlight_icon  "
 
 printf "%s%s%s" "$color" "$text" "$s2d_reset"
+
+# current_backlight=$(ddcutil getvcp 10 | grep -i 'Brightness' | awk '{print $9}' | sed 's/,$//')
+# up) /usr/bin/ddcutil setvcp 10 $((current_backlight + "${step}")) && kill -39 "$(pidof dwmblocks)"
+# down) /usr/bin/ddcutil setvcp 10 $((current_backlight - "${step}")) && kill -39 "$(pidof dwmblocks)"
+# up) /usr/bin/xbacklight "+${step}" && kill -39 "$(pidof dwmblocks)" ;;
+# down) /usr/bin/xbacklight "-${step}" && kill -39 "$(pidof dwmblocks)" ;;

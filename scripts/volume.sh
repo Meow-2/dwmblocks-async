@@ -1,19 +1,22 @@
 #!/bin/bash
 
+vol_change_step=4
 case "$BLOCK_BUTTON" in
-    1) ~/.config/dwm/scripts/app-starter.sh set_vol toggle ;;
+    1) pactl set-sink-mute @DEFAULT_SINK@ toggle </dev/null >/dev/null 2>&1 ;;
     2) echo 1 ;;
-    3)
-        pavucontrol >/dev/null &
-        exit 1
+    3) pavucontrol </dev/null >/dev/null 2>&1 & ;;
+    4) # vol_up
+        current_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | rg -o ' [0-9]+% ' | sed 's/%[[:space:]]//g' | head -n1)
+        if [ $((current_volume + vol_change_step)) -gt 100 ]; then
+            pactl set-sink-volume @DEFAULT_SINK@ 100% </dev/null >/dev/null 2>&1
+        else
+            pactl set-sink-volume @DEFAULT_SINK@ +${vol_change_step}% </dev/null >/dev/null 2>&1
+        fi
+        mpv --no-video ~/.config/dwm/dwmblocks-async/assets/audio-volume-change.oga </dev/null >/dev/null 2>&1 &
         ;;
-    4)
-        ~/.config/dwm/scripts/app-starter.sh set_vol up 3 >/dev/null &
-        exit 1
-        ;;
-    5)
-        ~/.config/dwm/scripts/app-starter.sh set_vol down 3 >/dev/null &
-        exit 1
+    5) # vol_down
+        pactl set-sink-volume @DEFAULT_SINK@ -${vol_change_step}% </dev/null >/dev/null 2>&1
+        mpv --no-video ~/.config/dwm/dwmblocks-async/assets/audio-volume-change.oga </dev/null >/dev/null 2>&1 &
         ;;
 esac
 
