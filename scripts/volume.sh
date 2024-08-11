@@ -35,6 +35,7 @@ if [ "$vol_muted" ]; then
     vol_text="--"
     vol_icon="󰖁"
 elif [ "$vol_text" -eq 0 ]; then
+    vol_text="00"
     vol_icon="󰖁"
 elif [ "$vol_text" -lt 10 ]; then
     vol_icon="󰕿"
