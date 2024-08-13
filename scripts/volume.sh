@@ -3,8 +3,8 @@
 vol_change_step=4
 case "$BLOCK_BUTTON" in
     1) pactl set-sink-mute @DEFAULT_SINK@ toggle </dev/null >/dev/null 2>&1 ;;
-    2) echo 1 ;;
-    3) pavucontrol </dev/null >/dev/null 2>&1 & ;;
+    2) pavucontrol </dev/null >/dev/null 2>&1 & ;;
+    3) playerctl -a play-pause </dev/null >/dev/null 2>&1 & ;;
     4) # vol_up
         current_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | rg -o ' [0-9]+% ' | sed 's/%[[:space:]]//g' | head -n1)
         if [ $((current_volume + vol_change_step)) -gt 100 ]; then
@@ -32,7 +32,7 @@ vol_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | grep "是")
 vol_text=$(pactl get-sink-volume @DEFAULT_SINK@ | rg -o ' [0-9]+% ' | sed 's/[ %]//g' | head -n1)
 
 if [ "$vol_muted" ]; then
-    vol_text="--"
+    vol_text="MT"
     vol_icon="󰖁"
 elif [ "$vol_text" -eq 0 ]; then
     vol_text="00"
@@ -45,6 +45,10 @@ elif [ "$vol_text" -le 20 ]; then
 elif [ "$vol_text" -le 60 ]; then
     vol_icon="󰖀"
 else vol_icon="󰕾"; fi
+
+if [ "$(playerctl -a status)" = "Paused" ]; then
+    vol_icon="󰏤"
+fi
 
 vol_text=${vol_text}%
 
