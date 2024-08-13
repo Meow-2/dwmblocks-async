@@ -130,7 +130,8 @@ else
     bandwidth_text_out="$(echo $tx_kib | awk '{printf "%3sK/s", $1}')"
 fi
 
-text=" $bandwidth_icon_in $bandwidth_text_in  $bandwidth_icon_out $bandwidth_text_out "
+# text=" $bandwidth_icon_in $bandwidth_text_in  $bandwidth_icon_out $bandwidth_text_out "
+text=" $bandwidth_icon_in $bandwidth_text_in "
 # text=" $bandwidth_text_in $bandwidth_icon_in $bandwidth_text_out $bandwidth_icon_out "
 color="$s2d_fg$color_fg$s2d_bg$color_bg"
 printf "%s%s%s" "$color" "$text" "$s2d_reset"
