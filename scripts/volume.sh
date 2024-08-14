@@ -4,7 +4,15 @@ vol_change_step=4
 case "$BLOCK_BUTTON" in
     1) pactl set-sink-mute @DEFAULT_SINK@ toggle </dev/null >/dev/null 2>&1 ;;
     2) pavucontrol </dev/null >/dev/null 2>&1 & ;;
-    3) playerctl -a play-pause </dev/null >/dev/null 2>&1 & ;;
+    3)
+        if playerctl -a status | grep -q "Paused" && ! playerctl -a status | grep -q "Playing"; then
+            playerctl -a play </dev/null >/dev/null 2>&1 &
+            isPaused="no"
+        else
+            playerctl -a pause </dev/null >/dev/null 2>&1 &
+            isPaused="yes"
+        fi
+        ;;
     4) # vol_up
         current_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | rg -o ' [0-9]+% ' | sed 's/%[[:space:]]//g' | head -n1)
         if [ $((current_volume + vol_change_step)) -gt 100 ]; then
@@ -46,11 +54,15 @@ elif [ "$vol_text" -le 60 ]; then
     vol_icon="󰖀"
 else vol_icon="󰕾"; fi
 
-if [ "$(playerctl -a status)" = "Paused" ]; then
+if [ -n "$isPaused" ]; then
+    if [ "$isPaused" = "yes" ]; then
+        vol_icon="󰏤"
+    fi
+elif playerctl -a status | grep -q "Paused" && ! playerctl -a status | grep -q "Playing"; then
     vol_icon="󰏤"
 fi
 
 vol_text=${vol_text}%
 
-text=" $vol_icon $vol_text "
+text=" $vol_icon $vol_text"
 printf "%s%s%s" "$color" "$text" "$s2d_reset"

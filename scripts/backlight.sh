@@ -18,7 +18,7 @@ color="$s2d_fg$color_fg$s2d_bg$color_bg"
 
 backlight_icon="󰖨"
 backlight_text=$(light | awk '{printf "%02d%", $1}') # light https://gitlab.com/dpeukert/light
-text=" $backlight_icon $backlight_text "
+text=" $backlight_icon $backlight_text"
 # text="  $backlight_text $backlight_icon  "
 
 printf "%s%s%s" "$color" "$text" "$s2d_reset"

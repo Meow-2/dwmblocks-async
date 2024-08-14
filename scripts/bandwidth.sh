@@ -110,7 +110,7 @@ tx_rate=$((tx_diff / time_diff))
 rx_kib=$((rx_rate >> 10))
 if hash bc 2>/dev/null && [[ "$rx_kib" -ge 1000 ]]; then
     if [[ "$rx_kib" -ge 10240 ]]; then
-        bandwidth_text_in="$(echo "scale=1; $rx_kib / 1024" | bc | awk '{printf "%2d󰉁M/s", int($1)}')"
+        bandwidth_text_in="$(echo "scale=1; $rx_kib / 1024" | bc | awk '{printf "󰉁%2dM/s", int($1)}')"
     else
         bandwidth_text_in="$(echo "scale=1; $rx_kib / 1024" | bc | awk '{printf "%3sM/s", $1}')"
     fi
@@ -122,7 +122,7 @@ fi
 tx_kib=$((tx_rate >> 10))
 if hash bc 2>/dev/null && [[ "$tx_kib" -ge 1000 ]]; then
     if [[ "$tx_kib" -ge 10240 ]]; then
-        bandwidth_text_out="$(echo "scale=1; $tx_kib / 1024" | bc | awk '{printf "%2d󰉁M/s", int($1)}')"
+        bandwidth_text_out="$(echo "scale=1; $tx_kib / 1024" | bc | awk '{printf "󰉁%2dM/s", int($1)}')"
     else
         bandwidth_text_out="$(echo "scale=1; $tx_kib / 1024" | bc | awk '{printf "%3sM/s", $1}')"
     fi
@@ -131,7 +131,7 @@ else
 fi
 
 # text=" $bandwidth_icon_in $bandwidth_text_in  $bandwidth_icon_out $bandwidth_text_out "
-text=" $bandwidth_icon_in $bandwidth_text_in "
+text=" $bandwidth_icon_in $bandwidth_text_in"
 # text=" $bandwidth_text_in $bandwidth_icon_in $bandwidth_text_out $bandwidth_icon_out "
 color="$s2d_fg$color_fg$s2d_bg$color_bg"
 printf "%s%s%s" "$color" "$text" "$s2d_reset"

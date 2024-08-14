@@ -22,6 +22,6 @@ color="$s2d_fg$color_fg$s2d_bg$color_bg"
 
 cpu_icon="󰒇"
 cpu_text="$(top -bn1 | awk '/^%Cpu/ { usage=int($2 + $4) } END { printf("%02d",usage) }')%"
-text=" $cpu_icon $cpu_text "
+text=" $cpu_icon $cpu_text"
 # text="  $cpu_text $cpu_icon  "
 printf "%s%s%s" "$color" "$text" "$s2d_reset"

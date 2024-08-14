@@ -39,6 +39,6 @@ END {
 ' /proc/meminfo)
 
 mem_icon=""
-text=" $mem_icon $mem_text "
+text=" $mem_icon $mem_text"
 # text="  $mem_text $mem_icon  "
 printf "%s%s%s" "$color" "$text" "$s2d_reset"

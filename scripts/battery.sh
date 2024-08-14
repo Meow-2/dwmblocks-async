@@ -75,4 +75,4 @@ for i in $(seq 0 $max_index); do
 done
 
 color="$s2d_fg$color_fg$s2d_bg$color_bg"
-printf "%s%s%s" "$color" "$text " "$s2d_reset"
+printf "%s%s%s" "$color" "$text" "$s2d_reset"

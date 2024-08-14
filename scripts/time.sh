@@ -31,6 +31,6 @@ case "$(date '+%I')" in
     "12") time_icon="" ;;
 esac
 
-text=" $time_icon $time_text "
+text=" $time_icon $time_text"
 # text="  $time_text $time_icon  "
 printf "%s%s%s" "$color" "$text" "$s2d_reset"
