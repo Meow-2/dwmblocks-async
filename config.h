@@ -27,6 +27,7 @@
     X("","~/.config/dwm/dwmblocks-async/scripts/backlight.sh 2>/dev/null"  , 30   , 5) \
     X("","~/.config/dwm/dwmblocks-async/scripts/volume.sh 2>/dev/null"     , 1    , 6) \
     X("","~/.config/dwm/dwmblocks-async/scripts/battery.sh 2>/dev/null"    , 60   , 7) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/safeeyes.sh 2>/dev/null",    0    , 9) \
     // update_volume_at_once: kill -40 $(pidof dwmblocks);
     // why 40? 40=34+6=SIGRTMIN+6,SIGRTMIN+n is real time singal
 
