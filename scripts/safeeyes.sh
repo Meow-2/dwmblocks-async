@@ -12,6 +12,12 @@ case "$BLOCK_BUTTON" in
             dunstify "Safeeyes 已暂停" </dev/null >/dev/null 2>&1 &
         fi
         ;;
+    2)
+        safeeyes -s </dev/null >/dev/null 2>&1 &
+        ;;
+    3)
+        dunstify "$(safeeyes --status)" </dev/null >/dev/null 2>&1 &
+        ;;
 esac
 
 s2d_reset="^d^" # statu2d control
