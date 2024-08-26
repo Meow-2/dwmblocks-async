@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 case "$BLOCK_BUTTON" in
     1) notify-send "battery1" ;;
     2) notify-send "battery2" ;;
     3) notify-send "battery3" ;;
-    3) notify-send "battery4" ;;
-    3) notify-send "battery5" ;;
+    4) notify-send "battery4" ;;
+    5) notify-send "battery5" ;;
 esac
 
 s2d_reset="^d^" # statu2d control

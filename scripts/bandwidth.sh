@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 get_network_name(){
     INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')

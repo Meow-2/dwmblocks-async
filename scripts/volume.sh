@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 vol_change_step=4
 case "$BLOCK_BUTTON" in

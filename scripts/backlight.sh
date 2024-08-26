@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 backlight_change_step=5
 case "$BLOCK_BUTTON" in
