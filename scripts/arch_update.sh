@@ -59,7 +59,7 @@ if [[ -n "$paru_out" ]]; then
 fi
 
 if [[ ${#updates[@]} -eq 0 ]]; then
-    text="   "
+    text="   "
 else
     text="  󰚰 "
     color_fg="#FFD371^"
