@@ -19,7 +19,7 @@
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 // update
 #define BLOCKS(X)                                                          \
-    X("","~/.config/dwm/dwmblocks-async/scripts/arch_update.sh 2>/dev/null", 1800 , 8) \
+    X("","~/.config/dwm/dwmblocks-async/scripts/arch_update.sh 2>/dev/null", 0 , 8) \
     X("","~/.config/dwm/dwmblocks-async/scripts/bandwidth.sh 2>/dev/null"  , 2    , 1) \
     X("","~/.config/dwm/dwmblocks-async/scripts/cpu.sh 2>/dev/null"        , 2    , 2) \
     X("","~/.config/dwm/dwmblocks-async/scripts/memory.sh 2>/dev/null"     , 2    , 3) \

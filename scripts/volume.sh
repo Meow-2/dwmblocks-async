@@ -14,7 +14,7 @@ case "$BLOCK_BUTTON" in
         fi
         ;;
     4) # vol_up
-        current_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | rg -o ' [0-9]+% ' | sed 's/%[[:space:]]//g' | head -n1)
+        current_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Eo ' [0-9]+% ' | sed 's/%[[:space:]]//g' | head -n1)
         if [ $((current_volume + vol_change_step)) -gt 100 ]; then
             pactl set-sink-volume @DEFAULT_SINK@ 100% </dev/null >/dev/null 2>&1
         else
@@ -37,7 +37,7 @@ color_fg="#FEB139^"
 color="$s2d_fg$color_fg$s2d_bg$color_bg"
 
 vol_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | grep "是")
-vol_text=$(pactl get-sink-volume @DEFAULT_SINK@ | rg -o ' [0-9]+% ' | sed 's/[ %]//g' | head -n1)
+vol_text=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Eo ' [0-9]+% ' | sed 's/[ %]//g' | head -n1)
 
 if [ "$vol_muted" ]; then
     vol_text="MT"

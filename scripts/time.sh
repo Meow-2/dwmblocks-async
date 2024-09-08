@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 case "$BLOCK_BUTTON" in
-    1) notify-send "date1" ;;
-    2) notify-send "date2" ;;
-    3) notify-send "date3" ;;
-    4) notify-send "date4" ;;
-    5) notify-send "date5" ;;
+    1) dunstify "date1" ;;
+    2) dunstify "date2" ;;
+    3) dunstify "date3" ;;
+    4) dunstify "date4" ;;
+    5) dunstify "date5" ;;
 esac
 s2d_reset="^d^" # statu2d control
 s2d_fg="^c"

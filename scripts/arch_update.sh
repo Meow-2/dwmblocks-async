@@ -2,7 +2,7 @@
 
 case "$BLOCK_BUTTON" in
     1)
-        kitty -o initial_window_width=1920 -o initial_window_height=1080 -o remember_window_size=no --class=floatkitty --hold zsh -c "paru -Syu;kill -42 \$(pidof dwmblocks)" >/dev/null &
+        kitty -o initial_window_width=1920 -o initial_window_height=1080 -o remember_window_size=no --class=floatkitty --hold zsh -c "paru -Syu --noconfirm;kill -42 \$(pidof dwmblocks)" >/dev/null &
         exit 1
         ;;
     2)
@@ -49,7 +49,7 @@ if [[ -n "$pacman_output" ]]; then
     done <<<"$pacman_output"
 fi
 
-paru_out=$(paru -Qua 2>/dev/null)
+paru_out=$(paru -Qu 2>/dev/null)
 if [[ -n "$paru_out" ]]; then
     while IFS= read -r line; do
         if ! echo "$line" | grep -q -e "已忽略"; then

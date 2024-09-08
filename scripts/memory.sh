@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 case "$BLOCK_BUTTON" in
-    1) notify-send "mem1" ;;
-    2) notify-send "mem2" ;;
-    3) notify-send "mem3" ;;
-    4) notify-send "mem4" ;;
-    5) notify-send "mem5" ;;
+    1) dunstify "mem1" ;;
+    2) dunstify "mem2" ;;
+    3) dunstify "mem3" ;;
+    4) dunstify "mem4" ;;
+    5) dunstify "mem5" ;;
 esac
 
 s2d_reset="^d^" # statu2d control

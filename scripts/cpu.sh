@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 case "$BLOCK_BUTTON" in
-    1) notify-send "cpu1" ;;
-    2) notify-send "cpu2" ;;
-    3) notify-send "cpu3" ;;
-    4) notify-send "cpu4" ;;
-    5) notify-send "cpu5" ;;
-    6) notify-send "cpu6" ;;
-    7) notify-send "cpu7" ;;
-    8) notify-send "cpu8" ;;
-    9) notify-send "cpu9" ;;
+    1) dunstify "cpu1" ;;
+    2) dunstify "cpu2" ;;
+    3) dunstify "cpu3" ;;
+    4) dunstify "cpu4" ;;
+    5) dunstify "cpu5" ;;
+    6) dunstify "cpu6" ;;
+    7) dunstify "cpu7" ;;
+    8) dunstify "cpu8" ;;
+    9) dunstify "cpu9" ;;
 esac
 
 s2d_reset="^d^" # statu2d control
