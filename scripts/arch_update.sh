@@ -2,7 +2,8 @@
 
 case "$BLOCK_BUTTON" in
     1)
-        kitty -o initial_window_width=1920 -o initial_window_height=1080 -o remember_window_size=no --class=floatkitty --hold zsh -c "paru -Syu --needed --noconfirm --color=always --skipreview;kill -42 \$(pidof dwmblocks)" >/dev/null &
+        read -r x y < <(xrandr --current | grep -oP '\d+x\d+' | tr x ' ')
+        kitty -o initial_window_width=$((x / 2)) -o initial_window_height=$((y / 2)) -o remember_window_size=no --class=floatkitty --hold zsh -c "paru -Syu --noconfirm;kill -42 \$(pidof dwmblocks)" >/dev/null &
         exit 1
         ;;
     2)
