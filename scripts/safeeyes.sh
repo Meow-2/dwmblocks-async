@@ -5,11 +5,13 @@ case "$BLOCK_BUTTON" in
         if safeeyes --status | grep -q "暂停"; then
             safeeyes -e </dev/null >/dev/null 2>&1 &
             isPaused="no"
-            dunstify "Safeeyes 已开启" </dev/null >/dev/null 2>&1 &
+            ~/Dotfiles/dwm/scripts/lanucher.sh autolock up >/dev/null 2>&1 &
+            dunstify "Safeeyes和无操作锁屏 已开启" </dev/null >/dev/null 2>&1 &
         else
             safeeyes -d </dev/null >/dev/null 2>&1 &
             isPaused="yes"
-            dunstify "Safeeyes 已暂停" </dev/null >/dev/null 2>&1 &
+            ~/Dotfiles/dwm/scripts/lanucher.sh autolock down >/dev/null 2>&1 &
+            dunstify "Safeeyes和无操作锁屏 已暂停" </dev/null >/dev/null 2>&1 &
         fi
         ;;
     2)
