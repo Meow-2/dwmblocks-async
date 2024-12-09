@@ -53,7 +53,7 @@ fi
 paru_out=$(paru -Qu 2>/dev/null)
 if [[ -n "$paru_out" ]]; then
     while IFS= read -r line; do
-        if ! echo "$line" | grep -q -e "已忽略"; then
+        if ! echo "$line" | grep -q -E "已忽略|被忽略的"; then
             updates+=("${line%% *}")
         fi
     done <<<"$paru_out"
